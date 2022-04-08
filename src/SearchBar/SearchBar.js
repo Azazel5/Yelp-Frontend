@@ -1,24 +1,30 @@
 import React from 'react'
+import styles from './SearchBar.module.css'
 
 export default function SearchBar() {
     return (
-        <div class="field has-addons">
-            <p class="control">
-                <button class="button is-static is-medium">
+        <div className="field has-addons">
+            <p className="control">
+                <button className="button is-static is-medium">
                     Search
                 </button>
             </p>
-            <p class="control">
-                <input class="input is-medium" type="text" placeholder="burgers, barbers, spas, handymen" />
+            <p className="control">
+                <input className={`input is-medium ${styles['input-control']}`} type="text" placeholder="burgers, barbers, spas, handymen" />
             </p>
-            <p class="control">
-                <button class="button is-static is-medium">
+            <p className="control">
+                <button className="button is-static is-medium">
                     NEAR
                 </button>
             </p>
-            <p class="control">
-                <input class="input is-medium" type="text" placeholder="Where" />
+            <p className="control">
+                <input className={`input is-medium ${styles['input-control']}`} type="text" placeholder="Where" />
             </p>
+            <div className={`button is-medium ${styles['search-button']}`}>
+                <span className={`icon is-small ${styles['search-icon']}`}>
+                    <i className="fas fa-search"></i>
+                </span>
+            </div>
         </div>
     )
 }

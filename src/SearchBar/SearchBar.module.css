@@ -1,0 +1,16 @@
+.input-control {
+    min-width: 320px;
+}
+
+/* CSS modules make each class scoped to the file by prepending and appending random stuff to the className. If, say, 
+you want to override the default bulma button class, you can obviously make it more specific by going .button.newClass.
+However, this will append stuff before the .button, after, and the same for newClass. How to not do that to the button
+class itself? Wrap the class with a :global(), which tells CSS module to not append stuff to this class specifically. */
+:global(.button).search-button {
+    background: #bd1f1f;
+    border: none;
+}
+
+:global(.icon).search-icon {
+    color: white;
+}
