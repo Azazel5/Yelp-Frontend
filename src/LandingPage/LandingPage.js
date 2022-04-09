@@ -7,11 +7,13 @@ import styles from './LandingPage.module.css'
 
 export default function LandingPage() {
     return (
-        <div>
-            <TopNav />
-            <img src={Logo} alt="logo" className={styles.logo} />
-            <SearchBar />
-            <SearchSuggestions />
+        <div className={styles.landing}>
+            <div className={styles['search-area']}>
+                <TopNav />
+                <img src={Logo} alt="logo" className={styles.logo} />
+                <SearchBar />
+                <SearchSuggestions />
+            </div>
         </div>
     )
 }
