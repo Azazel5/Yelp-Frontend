@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import * as api from './api'
 
-export const useBusinessSearch(term, location) {
+export function useBusinessSearch(term, location) {
     const [businesses, setBusinesses] = useState([])
     const [amountResults, setAmountResults] = useState()
     const [searchParams, setSearchParams] = useState({ term, location })
@@ -10,7 +10,7 @@ export const useBusinessSearch(term, location) {
         setBusinesses([])
         const fetchData = async () => {
             try {
-                const rawData = await get('/businesses/search', searchParams)
+                const rawData = await api.get('/.netlify/functions/search', searchParams)
                 const response = await rawData.json()
                 setBusinesses(response.businesses)
                 setAmountResults(response.total)
@@ -21,7 +21,7 @@ export const useBusinessSearch(term, location) {
             }
         }
 
-        await fetchData()
+        fetchData()
     }, [searchParams])
 
     return [businesses, amountResults, searchParams, setSearchParams]
