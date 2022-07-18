@@ -12,14 +12,18 @@ export default function Search() {
     const term = params.get('find_desc')
     const locationParam = params.get('find_loc')
 
-    const [businesses, amountResults, searchParams, setSearchParams] = useBusinessSearch(term, locationParam)
+    const [businesses, amountResults, searchParams, performSearch] = useBusinessSearch(term, locationParam)
+
+    function search(term, location) {
+        performSearch({ term, location })
+    }
 
     return (
         <div>
-            <Navbar term={term} location={locationParam} />
+            <Navbar term={term} location={locationParam} search={search} />
             <Subnav />
-            <SearchResultsSummary term={term} location={locationParam} />
-            <SearchResults businesses={businesses}/>
+            <SearchResultsSummary term={searchParams.term} location={searchParams.location} amountResults={amountResults} shownResults={businesses ? businesses.length : 0} />
+            <SearchResults businesses={businesses} />
         </div>
     )
 }
